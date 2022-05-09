@@ -5,10 +5,6 @@
 <configuration>
     <properties resource="db.properties" />
 
-    <typeAliases>
-       <!-- <typeAlias type="Member" alias="member" />-->
-    </typeAliases>
-
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -20,7 +16,8 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
-        <!--<mapper resource="memberMapper.xml" />-->
+        <mapper resource="memberMapper.xml" />
     </mappers>
 </configuration>

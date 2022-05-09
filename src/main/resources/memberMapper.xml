@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+    <!-- Member 정보 insert -->
+    <insert id="insertMember" parameterType="Member">
+        insert into tb_member (
+            id,
+            password,
+            name
+        )
+        values (
+            #{id},
+            #{password},
+            #{name}
+        )
+    </insert>
+
+    <!-- Member 정보 select -->
+    <select id="selectMemberById" parameterType="string" resultType="Member">
+        select
+            id,
+            password,
+            name
+        from tb_member
+        where id = #{id}
+    </select>
+</mapper>
