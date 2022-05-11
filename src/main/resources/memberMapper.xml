@@ -3,20 +3,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberMapper">
-    <!-- Member 정보 insert -->
-    <insert id="insertMember" parameterType="Member">
+    <!-- Member 정보 insert (mariadb)-->
+    <insert id="insertMember" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
         insert into tb_member (
-            id,
             password,
             name
         )
         values (
-            #{id},
             #{password},
             #{name}
         )
     </insert>
 
+    <!-- Member 정보 insert (oracle)-->
+    <!--
+    <insert id="insertMember" parameterType="Member">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            select seq_member.nextval from dual
+        </selectKey>
+        insert into tb_member (
+            id,
+            password,
+            name
+        )
+            values (
+            #{id},
+            #{password},
+            #{name}
+        )
+    </insert>
+    -->
     <!-- Member 정보 select -->
     <select id="selectMemberById" parameterType="string" resultType="Member">
         select

@@ -60,10 +60,10 @@ public class MemberDAO {
 
     public static void main(String[] args) {
         MemberDAO dao = new MemberDAO();
-        Member member = new Member("hong", "1234", "홍길동");
+        Member member = new Member("1234", "홍길동");
         // DB에 Member 객체 정보 insert 하기
-        //dao.insertMember(member);
-
+        dao.insertMember(member);
+        /*
         // hong 이라는 아이디를 가진 Member 정보 select 하기
         Member searchedMember = dao.selectMemberById("hong");
         System.out.println("============ 수정 전 ============ ");
@@ -78,5 +78,6 @@ public class MemberDAO {
 
         // hong 이라는 아이디를 가진 Member의 정보 delete 하기
         //dao.deleteMember(searchedMember.getId());
+         */
     }
 }

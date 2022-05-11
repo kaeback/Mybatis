@@ -1,19 +1,18 @@
 public class Member {
-    private String id;
+    private long id;
     private String password;
     private String name;
 
-    public Member(String id, String password, String name) {
-        this.id = id;
+    public Member(String password, String name) {
         this.password = password;
         this.name = name;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
