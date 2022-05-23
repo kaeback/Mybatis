@@ -1,19 +1,21 @@
+package model;
 public class Member {
-    private long id;
+    private String user_id;
     private String password;
     private String name;
 
-    public Member(String password, String name) {
+    public Member(String user_id, String password, String name) {
+        this.user_id = user_id;
         this.password = password;
         this.name = name;
     }
 
-    public long getId() {
-        return id;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getPassword() {
@@ -34,10 +36,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
-                "id='" + id + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "Member [name=" + name + ", password=" + password + ", user_id=" + user_id + "]";
     }
+    
 }

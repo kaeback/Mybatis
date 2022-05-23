@@ -2,8 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MemberMapper">
+<mapper namespace="dao.MemberMapper">
     <!-- Member 정보 insert (mariadb)-->
+    <!--
     <insert id="insertMember" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
         insert into tb_member (
             password,
@@ -14,45 +15,47 @@
             #{name}
         )
     </insert>
+    -->
 
     <!-- Member 정보 insert (oracle)-->
-    <!--
     <insert id="insertMember" parameterType="Member">
+    <!--         
         <selectKey keyProperty="id" resultType="int" order="BEFORE">
             select seq_member.nextval from dual
         </selectKey>
+         -->
         insert into tb_member (
-            id,
+            user_id,
             password,
             name
         )
             values (
-            #{id},
+            #{user_id},
             #{password},
             #{name}
         )
     </insert>
-    -->
+   
     <!-- Member 정보 select -->
     <select id="selectMemberById" parameterType="string" resultType="Member">
         select
-            id,
+            user_id,
             password,
             name
         from tb_member
-        where id = #{id}
+        where user_id = #{user_id}
     </select>
 
     <!-- Member 정보 update -->
     <update id="updateMember" parameterType="member">
         update tb_member set
             name = #{name}
-        where id = #{id}
+        where user_id = #{user_id}
     </update>
 
     <!-- Member 정보 delete -->
     <delete id="deleteMember" parameterType="string">
         delete from tb_member
-        where id = #{id}
+        where user_id = #{user_id}
     </delete>
 </mapper>
