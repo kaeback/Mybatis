@@ -22,7 +22,7 @@
         )
     </insert>
 
-    <!-- 게시글 검색 -->
+    <!-- 게시글 읽기 -->
     <select id="selectBoardById" parameterType="long" resultType="board">
         select
                 id, 
@@ -37,6 +37,11 @@
         where  
                 id = #{id}
     </select>
+
+    <!-- 조회수 업데이트 -->
+    <update id="updateBoardHit" parameterType="long">
+        update tb_board set hit = hit + 1 where id = #{id}
+    </update>
 
     <!-- 게시글 검색 -->
     <select id="selectBoardAndMemberById" parameterType="long" resultType="map">
@@ -54,6 +59,42 @@
         where  
                 b.id = #{id}
     </select>
+
+    <!-- 게시글 검색(회원 기준) -->
+    <resultMap id="selectBoardByUser" type="member">
+        <id property="user_id" column="user_id"/>
+        <result property="name" column="name"/>
+        <collection property="boardList" column="user_id" javaType="list" ofType="board" select="selectBoard">
+                <id property="id" column="id"/>
+                <result property="title" column="title"/>
+                <result property="content" column="content"/>
+                <result property="hit" column="hit"/>
+        </collection>
+    </resultMap>
+    <select id="selectBoardByMember" parameterType="string" resultMap="selectBoardByUser">
+        select
+                user_id,
+                name
+        from tb_member
+        where user_id = #{user_id}
+    </select>
+
+    <!-- 게시글 검색 -->
+    <resultMap id="boardResult" type="board" />
+        
+    </resultMap>
+    <select id="selectBoard" resultMap="boardResult">
+        select * from tb_board where id = #{id}
+    </select>
+
+    <!-- 회원정보 검색 -->
+    <select id="selectMember" resultType="member">
+        select * from tb_member where user_id = #{user_id}
+    </select>
+
+    <!-- 게시글 검색(게시글 기준) -->
+    <resultMap id="selectBoard"
+
 
     <!-- 게시글 수정 -->
     <update id="updateBoard" parameterType="board">

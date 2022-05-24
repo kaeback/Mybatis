@@ -1,8 +1,14 @@
 package model;
+
+import java.util.List;
+
 public class Member {
     private String user_id;
     private String password;
     private String name;
+    private List<Board> boardList;
+
+    public Member() {}
 
     public Member(String user_id, String password, String name) {
         this.user_id = user_id;
@@ -34,9 +40,26 @@ public class Member {
         this.name = name;
     }
 
+    public List<Board> getBoardList() {
+        return boardList;
+    }
+
+    public void setBoardList(List<Board> boardList) {
+        this.boardList = boardList;
+    }
+
+    public String boardListToString() {
+        StringBuffer sb = new StringBuffer();
+        for (Board board : boardList) {
+            sb.append(board.toString());
+        }
+
+        return sb.toString();
+    }
+
     @Override
     public String toString() {
-        return "Member [name=" + name + ", password=" + password + ", user_id=" + user_id + "]";
+        return "Member [name=" + name + ", password=" + password + ", user_id=" + user_id + "]" + boardListToString();
     }
     
 }

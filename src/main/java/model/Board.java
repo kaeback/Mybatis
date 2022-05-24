@@ -1,7 +1,5 @@
 package model;
 
-import java.time.LocalDateTime;
-
 public class Board {
     private Long id;
     private String user_id;
@@ -10,6 +8,7 @@ public class Board {
     private Long hit;
     private String input_time;
     private String last_modified_time;
+    private Member member;
     
     public Long getId() {
         return id;
@@ -65,6 +64,14 @@ public class Board {
     
     public void setLast_modified_time(String last_modified_time) {
         this.last_modified_time = last_modified_time;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     @Override
