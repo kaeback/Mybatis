@@ -1,15 +1,12 @@
 package dao;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import model.Board;
-import model.Member;
 
 public class BoardDAO {
     
@@ -49,12 +46,12 @@ public class BoardDAO {
         return result;
     }
 
-    public List<Member> selectBoardByMember(String user_id) {
+    public Board selectBoardResult(Long id) {
         try (SqlSession session = factory.openSession()) {
             BoardMapper mapper = session.getMapper(BoardMapper.class);
-            List<Member> selectBoardByMember = mapper.selectBoardByMember(user_id);
+            Board board = mapper.selectBoardResult(id);
 
-            return selectBoardByMember;
+            return board;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,7 +63,8 @@ public class BoardDAO {
         Board board = null;
         try (SqlSession session = factory.openSession()) {
             BoardMapper mapper = session.getMapper(BoardMapper.class);
-            board = mapper.selectBoard(id);            
+            board = mapper.selectBoard(id);        
+            System.out.println(board == null);    
         } catch (Exception e) {
             e.printStackTrace();
         }

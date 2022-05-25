@@ -30,10 +30,18 @@ public class MemberTest {
         memberDAO.deleteMember(user_id);
     }
 
+    public void selectMembermap() {
+        String user_id = "hong";
+        Member member = memberDAO.selectMembermap(user_id);
+        System.out.println(member);
+    }
+
     public static void main(String[] args) {
         MemberTest memberTest = new MemberTest();
         // memberTest.createMember();
-        memberTest.updateMember();
+        // memberTest.updateMember();
+        memberTest.selectMembermap();
     }
+
 
 }

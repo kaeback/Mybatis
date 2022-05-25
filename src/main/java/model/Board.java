@@ -77,7 +77,7 @@ public class Board {
     @Override
     public String toString() {
         return "Board [id=" + id + ", content=" + content + ", hit=" + hit + ", input_time=" + input_time
-                + ", last_modified_time=" + last_modified_time + ", title=" + title + ", user_id=" + user_id + "]";
+                + ", last_modified_time=" + last_modified_time + ", title=" + title + ", user_id=" + user_id + "]" + member.toString();
     }
     
 }

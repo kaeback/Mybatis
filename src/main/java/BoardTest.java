@@ -1,13 +1,12 @@
 
 
-import java.util.List;
 import java.util.Map;
 
 import dao.BoardDAO;
 import model.Board;
-import model.Member;
 
 public class BoardTest {
+
     private BoardDAO dao = new BoardDAO();
 
     public void createBoard() {
@@ -31,13 +30,10 @@ public class BoardTest {
         System.out.println("result.name : " + result.get("NAME"));
     }
 
-    public void findBoardByMember() {
-        String user_id = "hong";
-        List<Member> selectBoardByUser = dao.selectBoardByMember(user_id);
-
-        for (Member member : selectBoardByUser) {
-            System.out.println(member);
-        }
+    public void findtBoardResult() {
+        Long id = 7L;
+        Board board = dao.selectBoardResult(id);
+        System.out.println("board : " + board);
     }
 
     public void findBoard() {
@@ -52,6 +48,7 @@ public class BoardTest {
         // boardTest.findBoardById();
         // boardTest.findBoardAndMemberById();
         // boardTest.findBoardByMember();
-        boardTest.findBoard();
+        // boardTest.findBoard();
+        boardTest.findtBoardResult();
     }
 }

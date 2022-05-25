@@ -60,42 +60,6 @@
                 b.id = #{id}
     </select>
 
-    <!-- 게시글 검색(회원 기준) -->
-    <resultMap id="selectBoardByUser" type="member">
-        <id property="user_id" column="user_id"/>
-        <result property="name" column="name"/>
-        <collection property="boardList" column="user_id" javaType="list" ofType="board" select="selectBoard">
-                <id property="id" column="id"/>
-                <result property="title" column="title"/>
-                <result property="content" column="content"/>
-                <result property="hit" column="hit"/>
-        </collection>
-    </resultMap>
-    <select id="selectBoardByMember" parameterType="string" resultMap="selectBoardByUser">
-        select
-                user_id,
-                name
-        from tb_member
-        where user_id = #{user_id}
-    </select>
-
-    <!-- 게시글 검색 -->
-    <resultMap id="boardResult" type="board" />
-        
-    </resultMap>
-    <select id="selectBoard" resultMap="boardResult">
-        select * from tb_board where id = #{id}
-    </select>
-
-    <!-- 회원정보 검색 -->
-    <select id="selectMember" resultType="member">
-        select * from tb_member where user_id = #{user_id}
-    </select>
-
-    <!-- 게시글 검색(게시글 기준) -->
-    <resultMap id="selectBoard"
-
-
     <!-- 게시글 수정 -->
     <update id="updateBoard" parameterType="board">
         update tb_board set
@@ -111,4 +75,37 @@
         delete from tb_board where id = #{id}
     </delete>
     
+    <!-- 게시글 검색(resultMap 사용) -->
+    <resultMap id="boardResult" type="board">
+        <id property="id" column="id"/>
+        <result property="user_id" column="user_id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="hit" column="hit"/>
+        <result property="input_time" column="input_time"/>
+        <result property="last_modified_time" column="last_modified_time"/>
+        <association property="member" column="user_id" javaType="member" select="selectMember"/>
+    </resultMap>
+
+    <resultMap id="memberResult" type="member">
+        <id property="user_id" column="user_id"/>
+        <id property="password" column="password"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    
+    <select id="selectBoard" resultMap="boardResult">
+        select * from tb_board where id = #{id}
+    </select>
+
+    <select id="selectMember" resultMap="memberResult">
+        select * from tb_member where user_id = #{user_id}
+    </select>
+
+    <select id="selectBoardResult" resultMap="boardResult">
+        select
+            b.id, b.user_id, b.title, b.content, b.hit, b.input_time, b.last_modified_time,
+            m.user_id, m.password, m.name
+        from tb_board b join tb_member m on b.user_id = m.user_id
+        where b.id = #{id}
+    </select>
 </mapper>

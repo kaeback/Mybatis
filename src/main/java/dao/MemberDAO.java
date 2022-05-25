@@ -61,4 +61,16 @@ public class MemberDAO {
         }
     }
 
+    public Member selectMembermap(String user_id) {
+        try (SqlSession session = factory.openSession()) {
+            MemberMapper mapper = session.getMapper(MemberMapper.class);
+            Member member = mapper.selectMemberMap(user_id);
+            return member;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 }

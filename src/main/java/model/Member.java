@@ -1,12 +1,13 @@
 package model;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Member {
     private String user_id;
     private String password;
     private String name;
-    private List<Board> boardList;
+    private List<Board> boardList = new ArrayList<>();
 
     public Member() {}
 

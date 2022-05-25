@@ -58,4 +58,5 @@
         delete from tb_member
         where user_id = #{user_id}
     </delete>
+    
 </mapper>
