@@ -44,18 +44,18 @@
     </update>
 
     <!-- 게시글 검색 -->
-    <select id="selectBoardAndMemberById" parameterType="long" resultType="map">
+    <select id="selectBoardAndUserById" parameterType="long" resultType="map">
         select
                 b.id, 
                 b.user_id,
-                m.name,
+                u.name,
                 b.title,
                 b.content,
                 b.hit,
                 b.input_time,
                 b.last_modified_time
         from 
-                tb_board b join tb_member m on (b.user_id = m.user_id)
+                tb_board b join tb_user u on (b.user_id = u.user_id)
         where  
                 b.id = #{id}
     </select>
@@ -87,7 +87,7 @@
         <association property="member" column="user_id" javaType="member" select="selectMember"/>
     </resultMap>
 
-    <resultMap id="memberResult" type="member">
+    <resultMap id="userResult" type="user">
         <id property="user_id" column="user_id"/>
         <id property="password" column="password"/>
         <result property="name" column="name"/>
@@ -97,15 +97,15 @@
         select * from tb_board where id = #{id}
     </select>
 
-    <select id="selectMember" resultMap="memberResult">
-        select * from tb_member where user_id = #{user_id}
+    <select id="selectUser" resultMap="userResult">
+        select * from tb_user where user_id = #{user_id}
     </select>
 
     <select id="selectBoardResult" resultMap="boardResult">
         select
             b.id, b.user_id, b.title, b.content, b.hit, b.input_time, b.last_modified_time,
-            m.user_id, m.password, m.name
-        from tb_board b join tb_member m on b.user_id = m.user_id
+            u.user_id, u.password, u.name
+        from tb_board b join tb_user u on b.user_id = u.user_id
         where b.id = #{id}
     </select>
 </mapper>

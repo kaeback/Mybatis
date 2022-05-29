@@ -3,15 +3,15 @@ package model;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Member {
+public class User {
     private String user_id;
     private String password;
     private String name;
     private List<Board> boardList = new ArrayList<>();
 
-    public Member() {}
+    public User() {}
 
-    public Member(String user_id, String password, String name) {
+    public User(String user_id, String password, String name) {
         this.user_id = user_id;
         this.password = password;
         this.name = name;
@@ -58,9 +58,10 @@ public class Member {
         return sb.toString();
     }
 
-    @Override
-    public String toString() {
-        return "Member [name=" + name + ", password=" + password + ", user_id=" + user_id + "]" + boardListToString();
-    }
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + ", password=" + password + ", name=" + name + ", boardList=" + boardListToString()
+				+ "]";
+	}
     
 }

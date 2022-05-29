@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.MemberMapper">
+<mapper namespace="dao.UserMapper">
     <!-- Member 정보 insert (mariadb)-->
     <!--
-    <insert id="insertMember" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
-        insert into tb_member (
+    <insert id="insertUser" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_user (
             password,
             name
         )
@@ -18,13 +18,13 @@
     -->
 
     <!-- Member 정보 insert (oracle)-->
-    <insert id="insertMember" parameterType="Member">
+    <insert id="insertUser" parameterType="user">
     <!--         
         <selectKey keyProperty="id" resultType="int" order="BEFORE">
-            select seq_member.nextval from dual
+            select seq_user.nextval from dual
         </selectKey>
          -->
-        insert into tb_member (
+        insert into tb_user (
             user_id,
             password,
             name
@@ -37,25 +37,25 @@
     </insert>
    
     <!-- Member 정보 select -->
-    <select id="selectMemberById" parameterType="string" resultType="Member">
+    <select id="selectUserById" parameterType="string" resultType="user">
         select
             user_id,
             password,
             name
-        from tb_member
+        from tb_user
         where user_id = #{user_id}
     </select>
 
     <!-- Member 정보 update -->
-    <update id="updateMember" parameterType="member">
-        update tb_member set
+    <update id="updateUser" parameterType="user">
+        update tb_user set
             name = #{name}
         where user_id = #{user_id}
     </update>
 
     <!-- Member 정보 delete -->
-    <delete id="deleteMember" parameterType="string">
-        delete from tb_member
+    <delete id="deleteUser" parameterType="string">
+        delete from tb_user
         where user_id = #{user_id}
     </delete>
     

@@ -8,7 +8,7 @@ public class Board {
     private Long hit;
     private String input_time;
     private String last_modified_time;
-    private Member member;
+    private User member;
     
     public Long getId() {
         return id;
@@ -66,11 +66,11 @@ public class Board {
         this.last_modified_time = last_modified_time;
     }
 
-    public Member getMember() {
+    public User getMember() {
         return member;
     }
 
-    public void setMember(Member member) {
+    public void setMember(User member) {
         this.member = member;
     }
 

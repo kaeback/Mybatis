@@ -6,7 +6,7 @@
     <properties resource="db.properties" />
 
     <typeAliases>
-        <typeAlias type="model.Member" alias="member" />
+        <typeAlias type="model.User" alias="user" />
         <typeAlias type="model.Board" alias="board" />
     </typeAliases>
    
@@ -23,7 +23,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="mapper/memberMapper.xml" />
+        <mapper resource="mapper/userMapper.xml" />
         <mapper resource="mapper/boardMapper.xml" />
     </mappers>
 </configuration>
