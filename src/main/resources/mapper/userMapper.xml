@@ -45,6 +45,13 @@
         from tb_user
         where user_id = #{user_id}
     </select>
+    
+    <resultMap type="user" id="userMap">
+    
+    </resultMap>
+    <select id="selectUserMap" resultMap="userMap">
+    	select * from tb_user where user_id = #{user_id}
+    </select>
 
     <!-- Member 정보 update -->
     <update id="updateUser" parameterType="user">

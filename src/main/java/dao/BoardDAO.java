@@ -34,11 +34,11 @@ public class BoardDAO {
         return board;
     }
 
-    public Map<String, String> selectBoardAndMemberById(Long id) {
+    public Map<String, String> selectBoardAndUserById(Long id) {
         HashMap<String, String> result = null;
         try (SqlSession session = factory.openSession()) {
             BoardMapper mapper = session.getMapper(BoardMapper.class);
-            result = (HashMap<String, String>) mapper.selectBoardAndMemberById(id);
+            result = (HashMap<String, String>) mapper.selectBoardAndUserById(id);
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -63,8 +63,7 @@ public class BoardDAO {
         Board board = null;
         try (SqlSession session = factory.openSession()) {
             BoardMapper mapper = session.getMapper(BoardMapper.class);
-            board = mapper.selectBoard(id);        
-            System.out.println(board == null);    
+            board = mapper.selectBoard(id);            
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -84,7 +84,7 @@
         <result property="hit" column="hit"/>
         <result property="input_time" column="input_time"/>
         <result property="last_modified_time" column="last_modified_time"/>
-        <association property="member" column="user_id" javaType="member" select="selectMember"/>
+        <association property="user" column="user_id" javaType="user" select="selectUser"/>
     </resultMap>
 
     <resultMap id="userResult" type="user">

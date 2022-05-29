@@ -8,6 +8,7 @@ public class UserTest {
     public void createUser() {
         User member = new User("hong", "1234", "홍길동");
         userDAO.insertMember(member);
+        System.out.println("유저 생성 성공");
     }
 
     public void findUserById() {
@@ -38,9 +39,9 @@ public class UserTest {
 
     public static void main(String[] args) {
         UserTest userTest = new UserTest();
-        // memberTest.createMember();
-        // memberTest.updateMember();
-        userTest.selectUserMap();
+//        userTest.createUser();
+//        userTest.updateUser();
+//        userTest.selectUserMap();
     }
 
 

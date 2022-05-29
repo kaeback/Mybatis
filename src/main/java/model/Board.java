@@ -8,7 +8,7 @@ public class Board {
     private Long hit;
     private String input_time;
     private String last_modified_time;
-    private User member;
+    private User user = new User();;
     
     public Long getId() {
         return id;
@@ -66,18 +66,18 @@ public class Board {
         this.last_modified_time = last_modified_time;
     }
 
-    public User getMember() {
-        return member;
+    public User getUser() {
+        return user;
     }
 
-    public void setMember(User member) {
-        this.member = member;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return "Board [id=" + id + ", content=" + content + ", hit=" + hit + ", input_time=" + input_time
-                + ", last_modified_time=" + last_modified_time + ", title=" + title + ", user_id=" + user_id + "]" + member.toString();
+                + ", last_modified_time=" + last_modified_time + ", title=" + title + ", user_id=" + user_id + "]" + user.toString();
     }
     
 }

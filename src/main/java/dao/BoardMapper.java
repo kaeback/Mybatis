@@ -10,7 +10,7 @@ public interface BoardMapper {
 
     public int insertBoard(Board board);
     public Board selectBoardById(Long id);
-    public Map<String, String> selectBoardAndMemberById(Long id);
+    public Map<String, String> selectBoardAndUserById(Long id);
     
     public Board selectBoard(Long id);
     public Board selectBoardResult(Long id);
