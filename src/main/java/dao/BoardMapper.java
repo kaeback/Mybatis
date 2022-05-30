@@ -19,4 +19,5 @@ public interface BoardMapper {
     public int deleteBoard(Long id);
 
     public List<Board> selectAllBoard();
+    public List<Board> selectBoardTitleOrContent(Board board);
 }

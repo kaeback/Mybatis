@@ -108,4 +108,28 @@
         from tb_board b join tb_user u on b.user_id = u.user_id
         where b.id = #{id}
     </select>
+    
+    <!-- 제목 혹은 내용으로 검색 -->
+    <select id="selectBoardTitleOrContent" parameterType="board" resultMap="boardResult">
+    	select
+            b.id, b.user_id, b.title, b.content, b.hit, b.input_time, b.last_modified_time,
+            u.user_id, u.password, u.name
+        from tb_board b join tb_user u on b.user_id = u.user_id
+        <where>
+	       	<choose>
+	       		<when test="title != null">
+	       			title like '%' || #{title} || '%'
+	       		</when>
+	       		<when test="content != null">
+	       			content like '%' || #{content} || '%'
+	       		</when>
+	       	</choose>
+       	</where>
+    </select>
+    
+    <!-- 제목 + 내용으로 검색 -->
+    <select id="selectBoardTitleAndContent"></select>
+    
+    <!--  -->
+    
 </mapper>

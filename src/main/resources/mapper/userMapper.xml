@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserMapper">
-    <!-- Member 정보 insert (mariadb)-->
+    <!-- User 정보 insert (mariadb)-->
     <!--
     <insert id="insertUser" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
         insert into tb_user (
@@ -17,7 +17,7 @@
     </insert>
     -->
 
-    <!-- Member 정보 insert (oracle)-->
+    <!-- User 정보 insert (oracle)-->
     <insert id="insertUser" parameterType="user">
     <!--         
         <selectKey keyProperty="id" resultType="int" order="BEFORE">
@@ -36,7 +36,7 @@
         )
     </insert>
    
-    <!-- Member 정보 select -->
+    <!-- User 정보 select -->
     <select id="selectUserById" parameterType="string" resultType="user">
         select
             user_id,
@@ -53,17 +53,25 @@
     	select * from tb_user where user_id = #{user_id}
     </select>
 
-    <!-- Member 정보 update -->
+    <!-- User 정보 update -->
     <update id="updateUser" parameterType="user">
         update tb_user set
             name = #{name}
         where user_id = #{user_id}
     </update>
 
-    <!-- Member 정보 delete -->
+    <!-- User 정보 delete -->
     <delete id="deleteUser" parameterType="string">
         delete from tb_user
         where user_id = #{user_id}
     </delete>
+    
+    <!-- User id와 password로 회원 정보 검색 -->
+    <select id="selectUser" parameterType="user" resultType="user">
+    	select * from tb_user where user_id = #{user_id}
+    	<if test="password != null">
+    		and password = #{password}
+    	</if>
+    </select>
     
 </mapper>

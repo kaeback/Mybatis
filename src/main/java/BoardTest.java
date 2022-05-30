@@ -1,5 +1,6 @@
 
 
+import java.util.List;
 import java.util.Map;
 
 import dao.BoardDAO;
@@ -42,13 +43,24 @@ public class BoardTest {
         Board board = dao.selectBoard(id);
         System.out.println("board : " + board);
     }
+    
+    public void findBoardTitleOrContent() {
+    	Board search = new Board();
+    	search.setTitle("제목");
+    	search.setContent("내용   ");
+    	List<Board> result = dao.selectBoardTitleOrContent(search);
+    	for (Board board : result) {
+			System.out.println(board);
+		}
+    }
 
     public static void main(String[] args) {
         BoardTest boardTest = new BoardTest();
 //        boardTest.createBoard();
 //        boardTest.findBoardById();
 //        boardTest.findBoardAndUserById();
-        boardTest.findBoard();
+//        boardTest.findBoard();
 //        boardTest.findtBoardResult();
+        boardTest.findBoardTitleOrContent();
     }
 }

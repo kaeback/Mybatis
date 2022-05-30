@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -77,5 +78,20 @@ public class BoardDAO {
 
     public void deleteBoard(Long id) {
         
+    }
+    
+    public List<Board> selectAllBoard() {
+    	return null;
+    }
+    
+    public List<Board> selectBoardTitleOrContent(Board board) {
+    	try (SqlSession session = factory.openSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			return mapper.selectBoardTitleOrContent(board);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return null;
     }
 }

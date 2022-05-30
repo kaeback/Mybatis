@@ -7,7 +7,7 @@ import model.User;
 public class UserDAO {
     private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
 
-    public void insertMember(User user) {
+    public void insertUser(User user) {
         try (SqlSession session = factory.openSession()) {
             UserMapper mapper = session.getMapper(UserMapper.class);
             mapper.insertUser(user);
@@ -17,7 +17,7 @@ public class UserDAO {
         }
     }
 
-    public User selectMemberById(String id) {
+    public User selectUserById(String id) {
         User member = null;
         try (SqlSession session = factory.openSession()) {
             UserMapper mapper = session.getMapper(UserMapper.class);
@@ -66,6 +66,18 @@ public class UserDAO {
             UserMapper mapper = session.getMapper(UserMapper.class);
             User user = mapper.selectUserMap(user_id);
             return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    public User selectUser(User user) {
+    	try (SqlSession session = factory.openSession()) {
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            User result = mapper.selectUser(user);
+            return result;
         } catch (Exception e) {
             e.printStackTrace();
         }

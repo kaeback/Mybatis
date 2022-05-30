@@ -7,4 +7,5 @@ public interface UserMapper {
     public User selectUserMap(String user_id);
     public int updateUser(User user);
     public int deleteUser(String user_id);
+    public User selectUser(User user);
 }
